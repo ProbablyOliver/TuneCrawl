@@ -1,2 +1,0 @@
-Sharethis buttons (index.html & getfeatured.html & widget.php) - Enter publisher ID where noted.
-Soundcloud key (js/soundcloud.js & js/sc-player.js) - Enter soundcloud API key where noted.
