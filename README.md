@@ -3,14 +3,23 @@ TuneCrawl
 
 TuneCrawl - Find and play music from the most popular music streaming providers.
 
+### The following API keys were removed from the source:
 -----------------
+####Soundcloud API
 
-SETUP:
+#####Files affected:
 
-The following API keys were removed from the source:
+######js/soundcloud.js
+######js/sc-player.js
 
-Provider          Locations 
---------          ---------
-Soundcloud API    js/soundcloud.js & js/sc-player.js
-ShareThis         index.html & getfeatured.html & widget.php
+
+####ShareThis
+
+#####Files affected:
+
+######index.html
+
+######getfeatured.html
+
+######widget.php
 
