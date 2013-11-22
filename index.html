@@ -1,0 +1,177 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!-- Developed by Oliver Peat
+     oliver.peat@gmail.com -->
+    <meta name="description" content="Find and play any music from the most popular music streaming providers.">
+	<meta name="keywords" content="tunecrawl, search engine, music, free music, spotify, soundcloud, youtube, free song, free artist, streaming music, music search engine, grooveshark, tune crawl, rdio, stream free music, steaming service, stream, play music, play music free, find music">
+	<meta name="author" content="Oliver Peat">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>TuneCrawl - Find and play music from the most popular music streaming providers.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
+    <link href="css/introjs.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />  
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/additional.css" rel="stylesheet" type="text/css" />  
+    
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+    
+    <script type="text/javascript" src="js/soundcloud.player.api.js"></script>
+    <script type="text/javascript" src="js/intro.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+    <script src="http://j.maxmind.com/js/apis/geoip2/v2.0/geoip2.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap-alert.js"></script>
+    
+	<script type="text/javascript">var switchTo5x=false;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "ENTER PUBLISHER ID HERE", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>	      
+	
+    <script>
+		$(document).ready(function(){
+			$("#ToggleMusicPlayer").click(function(){
+				$("#musicPlayer").toggle();				
+			});
+		});
+	</script>
+	</head>
+<body>
+<script src="http://connect.soundcloud.com/sdk.js"></script>
+<script src="js/api.js"></script>
+<script src="js/soundcloud.js"></script>
+<script src="js/youtube.js"></script>
+<script src="js/spotify.js"></script>
+<script>
+function startDemo() {
+	//starts the demo when clicked and inputs the artist Zedd into the search
+	spotifyMDQuery.becameValid(null, 'Zedd');
+	introJs().start();
+}
+</script>
+
+<!-- Modal -->
+<!-- Modal gives overview of reasoning behind using location awareness. -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h3 id="myModalLabel">Location Sharing</h3>
+</div>
+<div class="modal-body">
+<p>Some tracks in Spotify are only available in certain locations.  In order to provide you with the most relevant search results, we request that you share your location.</p>
+<p>TuneCrawl does not store your location or use it for any purpose other than to bring you the most relevant search results. Read: <a href="PrivacyPolicy.html">Privacy Policy</a></p>
+<p>Should you have any questions/comments/concerns, you may always email us at <a href="mailto:admin@tunecrawl.com">admin@tunecrawl.com</a></p>
+<br/>
+<p><a href="http://www.mozilla.org/en-US/firefox/geolocation/">Read more about location-aware browsing.</a></p>
+<p><a href="http://www.geonames.org/">Country Code interpreted by GeoNames.</a></p>
+</div>
+<div class="modal-footer">
+<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
+</div>
+<!-- End Modal -->
+<div id="spotifyMDQuery">
+<div class="row-fluid">
+	<div class="span12">
+		<div id="topRight">
+			<a href="#" onclick="startDemo();return false;"><img src="img/Demo.png" alt="Demo Banner"/></a>
+		</div>
+		<!-- logo and search functions -->
+		<div class="row-fluid">
+			<div class="span4 offset4" id="searchInputArea">
+				<a href="index.html"><img src="img/TuneCrawlLogo.png" alt="TuneCrawl logo" width="175" height="175" id="logoImage"/></a><br/><br/>
+					    <div class="input-append" data-step="1" data-intro="TuneCrawl is a powerful music search experience. Begin by typing in an artist or song you would like to listen to."> 
+						    <input type="text" class="span10" placeholder="Type track or artist name" id="search">
+						    <button type="button" class="btn" onclick="searchButton()">Search</button>
+					    </div>
+			</div>
+		</div>
+		<br/><br/>
+		
+		<!-- Site use explanation and result population area -->
+		<div class="row-fluid" id="allResults" data-step="2" data-intro="Results will begin populating here instantly under their perspective providers.">
+			<div class="span4">
+				<div id="spotify_header"><h1>Search</h1><p>Start by typing in the artist or track you would like to hear. Results will begin to appear in multiple columns as you type.</p></div>
+				<div class="results" id="results">  			
+					<div class="list"></div>
+				</div> 
+			</div>
+			<div class="span4">
+				<div id="youtube_header"><h1>Select</h1><p>Each column contains search results from a different music source. The logo at the top of each column shows you which source that is.</p></div>
+				<div class="youtube_results" id="youtube_results" data-step="3" data-intro="Once you have found what you were looking for, you can press the blue play button to begin listening to the song on TuneCrawl's integrated player. You can also click the track name to listen to the song on the external website of your choice. Additional buttons under the track name allow you to share or buy the tune."></div>
+			</div>
+			<div class="span4">
+				<div id="soundcloud_header"><h1>Listen</h1><p>When you decide what song you would like to listen to, press the <img src="img/play_button.png" alt="Play" width="15" height="15"/> button to begin listening. You may also follow the link to play the music on your selected source's website/software.</p></div>
+				<div class="soundcloud_results" id="soundcloud_results"></div>
+			</div>
+		</div>
+		
+		<br/><br/>
+		<!-- Music player area -->
+		<div class="navbar navbar-fixed-bottom">
+			<button id="ToggleMusicPlayer" class="btn btn-info"  data-step="4" data-intro="Once you click a play button, the music player will appear here and play your music. To hide or show the player, simply click the Show/Hide Player button.">Show/Hide Player</button>
+			<div id="musicPlayer"></div>
+		</div>
+		</div>
+	</div>
+</div>
+<!-- footer with featured music, external links, and press links -->
+<footer>
+<div class="row-fluid">
+	<div class="span10 offset1">
+		<div class="span3">
+			<br/>
+			<h4>Featured Music:</h4>
+			<div id="resultsListDiv"><table class="table table-condensed"><tr><td rowspan="2" width="19" id="playButtonTD"><button type="button" title="Play" class="btn-play" onclick="playSoundcloud('http://soundcloud.com/anna-lunoe/breathe')"></button></td>
+    		<td><a href="http://soundcloud.com/anna-lunoe/breathe">Anna Lunoe - Breathe</a></td></tr>
+    		<tr><td>Share: <a href="http://twitter.com/share?text=Now Playing: Anna Lunoe - Breathe%20via&url=http://www.tunecrawl.com"><img src="img/twitterIcon.png" alt="Twitter" width="19" height="19"></a> <a href="http://www.facebook.com/sharer.php?u=http://www.tunecrawl.com"><img src="img/facebookIcon.png" alt="Facebook" width="19" height="19"></a> &nbsp&nbsp Buy: <a target="_blank" href="http://www.amazon.com/gp/search?ie=UTF8&camp=1789&creative=9325&index=digital-music&keywords=anna lunoe breathe&linkCode=ur2&tag=tune014-20"><img src="img/amazonIcon.png" alt="via Amazon" width="19" height="19"/></a> <a href="https://play.google.com/store/search?q=anna%20lunoe%20breathe&c=music"><img src="img/google-play-logo.png" alt="via Google Play" width="19" height="19"/></a><a href="http://www.beatport.com/track/breathe-extended/4684122"><img src="img/beatport.jpg" alt="Beatport" width="19" height="19"></a><img src="http://www.assoc-amazon.com/e/ir?t=tune014-20&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></td></tr></table></div>		
+		</div>
+		<div class="span6">
+		<br/>
+			<div id="footer">
+			<div class="span4">
+				<br/>
+				<a href="getfeatured.html">Get Featured</a><br/>
+				<a href="PrivacyPolicy.html">Privacy Policy</a><br/>
+				<a href="ToS.html">Terms of Service</a><br/>
+				<a href="widget.php">HTML Embed / Widget</a>
+			</div>
+			<div class="span4"><br/>
+				
+				<span class='st_facebook'></span>
+				<span class='st_twitter'></span>
+				<span class='st_googleplus'></span>
+				<span class='st_email'></span>
+				<span class='st_sharethis'></span>
+				<br/><br/>
+				
+				<iframe src="http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FTunecrawl&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;font=arial&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=132554916798691" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe>
+				<a href="https://twitter.com/TuneCrawl" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @TuneCrawl</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				<br/>
+			</div>
+			<div class="span4">
+				<br/>
+				<a href="http://tunecrawl.totemapp.com/company">Press</a><br/>
+				<a href="http://www.surveymonkey.com/s/5V5PCTJ">Feedback</a><br/>
+				<a href="mailto:admin@tunecrawl.com">admin@tunecrawl.com</a>
+			</div>
+			</div>
+		</div>
+		<div class="span3">
+			<br/>
+			<h4>As Seen On:</h4>
+			<a href="http://lifehacker.com/5993740/tunecrawl-instantly-finds-songs-on-spotify-youtube-and-soundcloud-so-you-can-listen-right-away"><img src="img/lifehacker_logo.png" alt="Lifehacker logo" width="100" height="100" id="LifehackerLogo"></a>
+			<a href="http://www.makeuseof.com/dir/tunecrawl-quickly-find-stream-music-from-spotify-youtube-soundcloud/"><img src="img/makeuseof_logo.png" alt="Make Use Of logo" width="125" height="125" id="MakeUseOfLogo"></a><br/>
+			<a href="http://onethingwell.org/post/47112301637/tunecrawl"><img src="img/onethingwell_logo.png" alt="One Thing Well logo" width="125" height="125" id="OneThingWellLogo"></a>
+			<a href="http://tv.revision3.com/tzdaily/tunecrawl-music-search"><img src="img/revision3_logo.png" alt="Revision3 logo" width="125" height="125" id="Revision3Logo"></a>
+		</div>
+	</div>
+</div>
+</footer>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</body>
+</html>

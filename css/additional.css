@@ -1,0 +1,82 @@
+﻿	#topRight {
+	    position: absolute;
+	    top: 0%;
+	    right: 0%;
+	}
+	#searchInputArea {
+		text-align:center;
+	}
+	#spotify_header {	
+		text-align:center;
+	}
+	#soundcloud_header{
+		text-align:center;
+	}
+	#youtube_header{
+		text-align:center;
+	}
+	#alertMessage{
+		text-align:center;
+		min-height:25px;
+	}
+	#topNavBar{
+		text-align:center;
+	}
+	#logo {
+		text-align:center;
+		border:0;
+	}
+	#testV {
+		vertical-align: top;
+	}
+	#playButtonTD {
+		text-align:center;
+	}
+	#logoImage {
+		max-height:175px;
+		max-width:175px;
+	}
+	#Revision3Logo {
+		max-height:125px;
+		max-width:125px;
+	}
+	#LifehackerLogo {
+		max-height:125px;
+		max-width:125px;
+	}
+	#MakeUseOfLogo {
+		max-height:125px;
+		max-width:125px;
+	}
+	#OneThingWellLogo {
+		max-height:125px;
+		max-width:125px;
+	}
+	#musicPlayer {
+		text-align:left;
+	}
+	h1 {
+	    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+	    font-size: 50px;
+	    line-height: 65px;
+	   	color:#0a84ff;
+	   	text-shadow: 1px 1px 1px #ccc;
+	}	
+	h4 {
+	    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+	    font-size: 17.5px;
+	    line-height: 17.5px;
+	   	color:#0a84ff;
+	   	text-shadow: 1px 1px 1px #ccc;
+	}
+	p {
+	    font-family: 'Vollkorn', Georgia, Times, serif;
+	    font-size: 16px;
+	    line-height: 25px;
+	}	
+	footer {
+		text-align:center;
+	}
+	#center {
+		text-align:center;
+	}
